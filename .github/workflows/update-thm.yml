@@ -1,20 +1,22 @@
 name: Update TryHackMe Stats
 
 on:
-  schedule:
-    - cron: "0 6 * * *
   workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *'
 
 jobs:
   update-stats:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
 
       - name: Fetch TryHackMe Data
         run: |
