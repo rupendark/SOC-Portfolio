@@ -10,7 +10,6 @@
 ## 🚀 TryHackMe Performance
 
 <!-- THM-STATS-START -->
-## 🔥 TryHackMe Achievements
 
 🥇 **Global Rank:** 504 (Top 1%)  
 🏠 **Rooms Completed:** 796  
