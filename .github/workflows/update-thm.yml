@@ -18,7 +18,7 @@ jobs:
 
       - name: Fetch TryHackMe Data
         run: |
-          USERNAME="YOUR_THM_USERNAME"
+          USERNAME="Rupendar"
 
           RESPONSE=$(curl -s "https://tryhackme.com/api/v2/public-profile?username=$USERNAME")
           echo "$RESPONSE" > thm.json
