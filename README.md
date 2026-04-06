@@ -1,25 +1,94 @@
-# Rupendar – Cybersecurity Portfolio
+# 🛡️ Rupendar | Cybersecurity Portfolio
+
+<p align="center">
+  <strong>SOC Analyst | Blue Team Enthusiast | Threat Hunter</strong><br>
+  Detection • Investigation • Incident Response
+</p>
+
+---
+
+## 🚀 TryHackMe Performance
 
 <!-- THM-STATS-START -->
 ## 🔥 TryHackMe Achievements
 
-🥇 Rank: 504 (Top 1%)
-🏠 Rooms Completed: 796
-🔥 Streak: 291 days
-🎖 Badges: 92
+🥇 **Global Rank:** 504 (Top 1%)  
+🏠 **Rooms Completed:** 796  
+🔥 **Current Streak:** 291 Days  
+🎖 **Badges Earned:** 92  
+
 <!-- THM-STATS-END -->
 
-## 🛠 Core Skills Developed
-- Network Enumeration (Nmap, Netcat)
-- Web Exploitation (SQLi, XSS, IDOR)
-- Privilege Escalation (Linux & Windows)
-- Active Directory Attacks
-- Log Analysis & SIEM Investigation
-- Incident Response Fundamentals
+---
 
-## 📂 Lab Categories
-- Red Team Labs
-- Blue Team Labs
-- SOC Investigation Labs
-- Malware Analysis
-- Active Directory Exploitation
+## 🧠 Core Technical Skills
+
+### 🔍 Threat Detection & Investigation
+- Log Analysis (Windows Event Logs, Sysmon)
+- SIEM Monitoring & Alert Triage
+- Incident Response Lifecycle
+- MITRE ATT&CK Mapping
+- IOC Identification & Threat Hunting
+
+### 🌐 Network & Infrastructure Security
+- Network Enumeration (Nmap, Netcat)
+- Traffic Analysis (Wireshark, TCPDump)
+- Firewall & IDS/IPS Concepts
+- TCP/IP & OSI Model Deep Understanding
+
+### 🕷 Web & Application Security
+- SQL Injection (Error-based, Blind)
+- Cross-Site Scripting (Stored & Reflected)
+- IDOR & Authentication Bypass
+- Burp Suite Testing & Exploitation
+
+### 🖥 Privilege Escalation & AD Security
+- Linux Privilege Escalation
+- Windows Privilege Escalation
+- Active Directory Enumeration
+- Kerberoasting & Lateral Movement
+
+---
+
+## 🛠 Tools & Platforms
+
+- 🟢 Microsoft Sentinel  
+- 🟡 Splunk  
+- 🔵 Elastic (ELK Stack)  
+- 🛡 Sysmon  
+- 🔍 Nmap  
+- 🐍 Python (Security Automation)  
+- 🐧 Linux (Bash Scripting)  
+
+---
+
+## 📂 Lab Experience Breakdown
+
+- 🔴 Red Team Simulation Labs  
+- 🔵 Blue Team Detection Labs  
+- 🛡 SOC Investigation Scenarios  
+- 🦠 Malware Analysis Rooms  
+- 🏢 Active Directory Exploitation  
+- 📊 SIEM Log Correlation Exercises  
+
+---
+
+## 🎯 Career Focus
+
+Actively targeting:
+
+- SOC Analyst (L1 / L2)
+- Threat Detection & Monitoring Roles
+- Blue Team & Defensive Security Positions
+
+---
+
+## 📬 Connect With Me
+
+- LinkedIn: *(Add your LinkedIn URL here)*
+- TryHackMe: https://tryhackme.com/p/Rupendar
+- GitHub: https://github.com/Rupendar
+
+---
+
+⭐ Consistent learner | 790+ Labs Completed | Top 1% Globally
