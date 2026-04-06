@@ -22,20 +22,23 @@ jobs:
         run: |
           USERNAME="Rupendar"
 
-          RESPONSE=$(curl -s "https://tryhackme.com/api/v2/public-profile?username=$USERNAME")
-          echo "$RESPONSE" > thm.json
+          curl -s "https://tryhackme.com/api/v2/public-profile?username=$USERNAME" > thm.json
 
           RANK=$(jq -r '.data.rank' thm.json)
-          ROOMS=$(jq -r '.data.completedRooms' thm.json)
+          TOP=$(jq -r '.data.topPercentage' thm.json)
+          ROOMS=$(jq -r '.data.completedRoomsNumber' thm.json)
           STREAK=$(jq -r '.data.streak' thm.json)
-          BADGES=$(jq -r '.data.badges | length' thm.json)
+          BADGES=$(jq -r '.data.badgesNumber' thm.json)
+          BADGE_URL=$(jq -r '.data.badgeImageURL' thm.json)
 
           echo "## 🔥 TryHackMe Achievements" > thm-stats.md
           echo "" >> thm-stats.md
-          echo "![Rank](https://img.shields.io/badge/Rank-Top%20${RANK}%25-brightgreen)" >> thm-stats.md
-          echo "![Rooms](https://img.shields.io/badge/Rooms-${ROOMS}-blue)" >> thm-stats.md
-          echo "![Streak](https://img.shields.io/badge/Streak-${STREAK}%20Days-orange)" >> thm-stats.md
-          echo "![Badges](https://img.shields.io/badge/Badges-${BADGES}-purple)" >> thm-stats.md
+          echo "![THM Badge]($BADGE_URL)" >> thm-stats.md
+          echo "" >> thm-stats.md
+          echo "🥇 Rank: $RANK (Top $TOP%)" >> thm-stats.md
+          echo "🏠 Rooms Completed: $ROOMS" >> thm-stats.md
+          echo "🔥 Streak: $STREAK days" >> thm-stats.md
+          echo "🎖 Badges: $BADGES" >> thm-stats.md
 
           awk '
           /<!-- THM-STATS-START -->/ {print; system("cat thm-stats.md"); skip=1; next}
