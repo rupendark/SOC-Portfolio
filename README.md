@@ -4,10 +4,11 @@
 ![TryHackMe Badge](https://tryhackme-badges.s3.amazonaws.com/Rupendar.png)
 
 ## 🔥 TryHackMe Achievements
-- 🏆 Top 1% Global Rank
-- 🧪 796+ Rooms Completed
-- 🔥 291-Day Streak
-- 🎖 92 Badges Earned
+
+![Rank](https://img.shields.io/badge/Rank-Top%201%25-brightgreen)
+![Rooms](https://img.shields.io/badge/Rooms-796%2B-blue)
+![Streak](https://img.shields.io/badge/Streak-291%20Days-orange)
+![Badges](https://img.shields.io/badge/Badges-92-purple)
 
 ## 🛠 Core Skills Developed
 - Network Enumeration (Nmap, Netcat)
