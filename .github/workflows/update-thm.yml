@@ -1,0 +1,94 @@
+name: Update TryHackMe Stats
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # Runs daily at 6 AM UTC
+  workflow_dispatch:
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install axios cheerio fs
+
+      - name: Fetch and Update THM Stats
+        run: |
+          cat << 'EOF' > update.js
+          const axios = require('axios');
+          const cheerio = require('cheerio');
+          const fs = require('fs');
+
+          const USERNAME = "Rupendar";
+          const URL = `https://tryhackme.com/p/${USERNAME}`;
+
+          async function fetchStats() {
+              try {
+                  const { data } = await axios.get(URL);
+                  const $ = cheerio.load(data);
+
+                  const pageText = $('body').text();
+
+                  const rankMatch = pageText.match(/Top\s*\d+%/);
+                  const roomsMatch = pageText.match(/Completed rooms\s*(\d+)/);
+                  const streakMatch = pageText.match(/Streak\s*(\d+)/);
+                  const badgesMatch = pageText.match(/Badges\s*(\d+)/);
+
+                  const stats = {
+                      rank: rankMatch ? rankMatch[0] : "N/A",
+                      rooms: roomsMatch ? roomsMatch[1] : "N/A",
+                      streak: streakMatch ? streakMatch[1] : "N/A",
+                      badges: badgesMatch ? badgesMatch[1] : "N/A"
+                  };
+
+                  fs.writeFileSync("thm-stats.json", JSON.stringify(stats, null, 2));
+
+                  const readme = `
+## 🔥 TryHackMe Achievements
+
+![Rank](https://img.shields.io/badge/Rank-${encodeURIComponent(stats.rank)}-brightgreen)
+![Rooms](https://img.shields.io/badge/Rooms-${stats.rooms}-blue)
+![Streak](https://img.shields.io/badge/Streak-${stats.streak}%20Days-orange)
+![Badges](https://img.shields.io/badge/Badges-${stats.badges}-purple)
+`;
+
+                  let currentREADME = fs.readFileSync("README.md", "utf8");
+
+                  const start = "<!-- THM-STATS-START -->";
+                  const end = "<!-- THM-STATS-END -->";
+
+                  const updatedREADME = currentREADME.replace(
+                      new RegExp(`${start}[\\s\\S]*${end}`),
+                      `${start}\n${readme}\n${end}`
+                  );
+
+                  fs.writeFileSync("README.md", updatedREADME);
+
+                  console.log("THM stats updated successfully.");
+
+              } catch (error) {
+                  console.error("Error fetching THM stats:", error);
+              }
+          }
+
+          fetchStats();
+          EOF
+
+          node update.js
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Auto-update TryHackMe stats" || echo "No changes to commit"
+          git push
