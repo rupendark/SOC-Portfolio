@@ -1,4 +1,4 @@
-# 🛡️ Rupendar | Cybersecurity Portfolio
+# 🛡️ Rupendar's Cybersecurity Portfolio
 
 <p align="center">
   <strong>SOC Analyst | Blue Team Enthusiast | Threat Hunter</strong><br>
