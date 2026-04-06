@@ -1,6 +1,6 @@
+<p align="center">
 # 🛡️ Rupendar's Cybersecurity Portfolio
 
-<p align="center">
   <strong>SOC Analyst | Blue Team Enthusiast | Threat Hunter</strong><br>
   Detection • Investigation • Incident Response
 </p>
@@ -84,7 +84,7 @@ Actively targeting:
 
 ## 📬 Connect With Me
 
-- LinkedIn: *(Add your LinkedIn URL here)*
+- LinkedIn: https://www.linkedin.com/in/rupendarkumar/
 - TryHackMe: https://tryhackme.com/p/Rupendar
 - GitHub: https://github.com/Rupendar
 
