@@ -3,8 +3,6 @@
 <!-- THM-STATS-START -->
 ## 🔥 TryHackMe Achievements
 
-![THM Badge](https://tryhackme-badges.s3.amazonaws.com/Rupendar.png)
-
 🥇 Rank: 504 (Top 1%)
 🏠 Rooms Completed: 796
 🔥 Streak: 291 days
