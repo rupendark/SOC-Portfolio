@@ -1,4 +1,7 @@
 # Rupendar – Cybersecurity Portfolio
+## 🔥 TryHackMe Stats
+
+![TryHackMe Badge](https://tryhackme-badges.s3.amazonaws.com/YOUR_USERNAME.png)
 
 ## 🔥 TryHackMe Achievements
 - 🏆 Top 1% Global Rank
