@@ -33,8 +33,7 @@ jobs:
 
           echo "## 🔥 TryHackMe Achievements" > thm-stats.md
           echo "" >> thm-stats.md
-          echo "![THM Badge]($BADGE_URL)" >> thm-stats.md
-          echo "" >> thm-stats.md
+        
           echo "🥇 Rank: $RANK (Top $TOP%)" >> thm-stats.md
           echo "🏠 Rooms Completed: $ROOMS" >> thm-stats.md
           echo "🔥 Streak: $STREAK days" >> thm-stats.md
