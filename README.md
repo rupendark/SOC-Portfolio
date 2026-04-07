@@ -88,4 +88,4 @@ Actively targeting:
 
 ---
 
-⭐ Consistent learner | 790+ Labs Completed | Top 1% Globally
+⭐ Consistent learner | 800+ Labs Completed | Top 1% Globally
