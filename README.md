@@ -10,12 +10,14 @@
 ## 🚀 TryHackMe Performance
 
 <!-- THM-STATS-START -->
+## 🔥 TryHackMe Achievements
 
-🥇 **Global Rank:** 504 (Top 1%)  
-🏠 **Rooms Completed:** 796  
-🔥 **Current Streak:** 291 Days  
-🎖 **Badges Earned:** 92  
+![THM Badge](https://tryhackme-badges.s3.amazonaws.com/Rupendar.png)
 
+🥇 Rank: 497 (Top 1%)
+🏠 Rooms Completed: 800
+🔥 Streak: 292 days
+🎖 Badges: 92
 <!-- THM-STATS-END -->
 
 ---
