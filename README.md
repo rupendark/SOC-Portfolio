@@ -7,8 +7,6 @@
 
 ---
 
-## 🚀 TryHackMe Performance
-
 <!-- THM-STATS-START -->
 ## 🔥 TryHackMe Achievements
 
