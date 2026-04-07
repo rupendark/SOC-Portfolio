@@ -1,5 +1,5 @@
+#  Rupendar's Cybersecurity Portfolio
 <p align="center">
-  #  Rupendar's Cybersecurity Portfolio
 
   <strong>SOC Analyst | Blue Team Enthusiast | Threat Hunter</strong><br>
   Detection • Investigation • Incident Response
