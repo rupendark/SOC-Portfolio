@@ -10,9 +10,9 @@
 <!-- THM-STATS-START -->
 ## 🔥 TryHackMe Achievements
 
-🥇 Rank: 296 (Top 1%)
-🏠 Rooms Completed: 896
-🔥 Streak: 315 days
+🥇 Rank: 283 (Top 1%)
+🏠 Rooms Completed: 903
+🔥 Streak: 316 days
 🎖 Badges: 98
 <!-- THM-STATS-END -->
 
