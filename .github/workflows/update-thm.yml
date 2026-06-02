@@ -3,7 +3,7 @@ name: Update TryHackMe Stats
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 6 * * *'
+    - cron: "0 6 * * *"
 
 jobs:
   update-stats:
@@ -22,26 +22,48 @@ jobs:
         run: |
           USERNAME="Rupendar"
 
-          curl -s "https://tryhackme.com/api/v2/public-profile?username=$USERNAME" > thm.json
+          echo "Fetching profile for $USERNAME..."
 
-          RANK=$(jq -r '.data.rank' thm.json)
-          TOP=$(jq -r '.data.topPercentage' thm.json)
-          ROOMS=$(jq -r '.data.completedRoomsNumber' thm.json)
-          STREAK=$(jq -r '.data.streak' thm.json)
-          BADGES=$(jq -r '.data.badgesNumber' thm.json)
-          BADGE_URL=$(jq -r '.data.badgeImageURL' thm.json)
+          curl -s -L \
+            "https://tryhackme.com/api/v2/public-profile?username=${USERNAME}" \
+            -o thm.json
 
-          echo "## 🔥 TryHackMe Achievements" > thm-stats.md
-          echo "" >> thm-stats.md
-        
-          echo "🥇 Rank: $RANK (Top $TOP%)" >> thm-stats.md
-          echo "🏠 Rooms Completed: $ROOMS" >> thm-stats.md
-          echo "🔥 Streak: $STREAK days" >> thm-stats.md
-          echo "🎖 Badges: $BADGES" >> thm-stats.md
+          echo "Response received:"
+          cat thm.json
+
+          # Validate JSON before parsing
+          if ! jq empty thm.json 2>/dev/null; then
+            echo "❌ API did not return valid JSON"
+            exit 1
+          fi
+
+          RANK=$(jq -r '.data.rank // "N/A"' thm.json)
+          TOP=$(jq -r '.data.topPercentage // "N/A"' thm.json)
+          ROOMS=$(jq -r '.data.completedRoomsNumber // "N/A"' thm.json)
+          STREAK=$(jq -r '.data.streak // "N/A"' thm.json)
+          BADGES=$(jq -r '.data.badgesNumber // "N/A"' thm.json)
+
+          cat > thm-stats.md << EOF
+          ## 🔥 TryHackMe Achievements
+
+          🥇 Rank: $RANK (Top $TOP%)
+          🏠 Rooms Completed: $ROOMS
+          🔥 Streak: $STREAK days
+          🎖 Badges: $BADGES
+          EOF
 
           awk '
-          /<!-- THM-STATS-START -->/ {print; system("cat thm-stats.md"); skip=1; next}
-          /<!-- THM-STATS-END -->/ {skip=0}
+          /<!-- THM-STATS-START -->/ {
+            print
+            system("cat thm-stats.md")
+            skip=1
+            next
+          }
+          /<!-- THM-STATS-END -->/ {
+            skip=0
+            print
+            next
+          }
           !skip
           ' README.md > README.tmp && mv README.tmp README.md
 
@@ -49,6 +71,10 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
+
           git add README.md
-          git commit -m "Auto-update TryHackMe stats" || echo "No changes"
+
+          git diff --cached --quiet && exit 0
+
+          git commit -m "Auto-update TryHackMe stats"
           git push
