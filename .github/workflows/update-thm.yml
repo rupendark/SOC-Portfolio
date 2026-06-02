@@ -1,4 +1,10 @@
-- name: Fetch TryHackMe Data
+name: Update TryHackMe Stats
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *'
+    
   run: |
     USERNAME="Rupendar"
 
