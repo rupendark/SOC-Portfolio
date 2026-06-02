@@ -1,80 +1,45 @@
-name: Update TryHackMe Stats
+- name: Fetch TryHackMe Data
+  run: |
+    USERNAME="Rupendar"
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 6 * * *"
+    curl -sL "https://tryhackme.com/api/v2/public-profile?username=${USERNAME}" -o thm.json
 
-jobs:
-  update-stats:
-    runs-on: ubuntu-latest
+    echo "Response preview:"
+    head -c 500 thm.json
+    echo ""
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    # Validate JSON
+    jq empty thm.json
 
-      - name: Install jq
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y jq
+    RANK=$(jq -r '.data.rank' thm.json)
+    TOP=$(jq -r '.data.topPercentage' thm.json)
+    ROOMS=$(jq -r '.data.completedRoomsNumber' thm.json)
+    STREAK=$(jq -r '.data.streak' thm.json)
+    BADGES=$(jq -r '.data.badgesNumber' thm.json)
+    BADGE_URL=$(jq -r '.data.badgeImageURL' thm.json)
 
-      - name: Fetch TryHackMe Data
-        run: |
-          USERNAME="Rupendar"
+    cat > thm-stats.md << EOF
+    ## 🔥 TryHackMe Achievements
 
-          echo "Fetching profile for $USERNAME..."
+    🥇 Rank: $RANK (Top $TOP%)
+    🏠 Rooms Completed: $ROOMS
+    🔥 Streak: $STREAK days
+    🎖 Badges: $BADGES
 
-          curl -s -L \
-            "https://tryhackme.com/api/v2/public-profile?username=${USERNAME}" \
-            -o thm.json
+    ![TryHackMe Badge]($BADGE_URL)
+    EOF
 
-          echo "Response received:"
-          cat thm.json
-
-          # Validate JSON before parsing
-          if ! jq empty thm.json 2>/dev/null; then
-            echo "❌ API did not return valid JSON"
-            exit 1
-          fi
-
-          RANK=$(jq -r '.data.rank // "N/A"' thm.json)
-          TOP=$(jq -r '.data.topPercentage // "N/A"' thm.json)
-          ROOMS=$(jq -r '.data.completedRoomsNumber // "N/A"' thm.json)
-          STREAK=$(jq -r '.data.streak // "N/A"' thm.json)
-          BADGES=$(jq -r '.data.badgesNumber // "N/A"' thm.json)
-
-          cat > thm-stats.md << EOF
-          ## 🔥 TryHackMe Achievements
-
-          🥇 Rank: $RANK (Top $TOP%)
-          🏠 Rooms Completed: $ROOMS
-          🔥 Streak: $STREAK days
-          🎖 Badges: $BADGES
-          EOF
-
-          awk '
-          /<!-- THM-STATS-START -->/ {
-            print
-            system("cat thm-stats.md")
-            skip=1
-            next
-          }
-          /<!-- THM-STATS-END -->/ {
-            skip=0
-            print
-            next
-          }
-          !skip
-          ' README.md > README.tmp && mv README.tmp README.md
-
-      - name: Commit changes
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
-
-          git add README.md
-
-          git diff --cached --quiet && exit 0
-
-          git commit -m "Auto-update TryHackMe stats"
-          git push
+    awk '
+    /<!-- THM-STATS-START -->/ {
+      print
+      system("cat thm-stats.md")
+      skip=1
+      next
+    }
+    /<!-- THM-STATS-END -->/ {
+      skip=0
+      print
+      next
+    }
+    !skip
+    ' README.md > README.tmp && mv README.tmp README.md
