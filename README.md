@@ -10,13 +10,13 @@
 <!-- THM-STATS-START -->
 ## 🔥 TryHackMe Achievements
 
-🥇 Rank: <!--THM_RANK-->Loading...<!--/THM_RANK-->
+🥇 Rank: <!--THM_RANK-->N/A<!--/THM_RANK-->
 
-🏠 Rooms Completed: <!--THM_ROOMS-->Loading...<!--/THM_ROOMS-->
+🏠 Rooms Completed: <!--THM_ROOMS-->N/A<!--/THM_ROOMS-->
 
-🔥 Streak: <!--THM_STREAK-->Loading...<!--/THM_STREAK--> days
+🔥 Streak: <!--THM_STREAK-->N/A<!--/THM_STREAK--> days
 
-🎖 Badges: <!--THM_BADGES-->Loading...<!--/THM_BADGES-->
+🎖 Badges: <!--THM_BADGES-->N/A<!--/THM_BADGES-->
 <!-- THM-STATS-END -->
 
 ---
