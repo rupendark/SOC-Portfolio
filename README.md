@@ -14,7 +14,7 @@
 
 🏠 Rooms Completed: 1258
 
-🔥 Streak: 394
+🔥 Streak: 396
 
 🎖 Badges: 109
 <!-- THM-STATS-END -->
