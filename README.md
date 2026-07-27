@@ -10,11 +10,11 @@
 <!-- THM-STATS-START -->
 ## 🔥 TryHackMe Achievements
 
-🥇 Rank: 30
+🥇 Rank: 31
 
-🏠 Rooms Completed: 1258
+🏠 Rooms Completed: 1262
 
-🔥 Streak: 396
+🔥 Streak: 402
 
 🎖 Badges: 109
 <!-- THM-STATS-END -->
