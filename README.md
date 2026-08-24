@@ -12,9 +12,9 @@
 
 🥇 Rank: 28
 
-🏠 Rooms Completed: 1284
+🏠 Rooms Completed: 1287
 
-🔥 Streak: 422
+🔥 Streak: 430
 
 🎖 Badges: 113
 <!-- THM-STATS-END -->
